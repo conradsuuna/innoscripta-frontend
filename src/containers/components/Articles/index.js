@@ -46,12 +46,12 @@ export const Articles = () => {
 
     return (
         <>
-            {error && <p>Loading data failed, please try again!</p>}
             <div style={{ margin: '60px 10px 10px 10px' }}>
                 <DataFilter
                     sourcesOptions={sourcesOptions}
                     loading={sourcesLoading}
                 />
+                {error && <h1 style={{ margin: '100px' }}>Loading data failed, please try again later!</h1>}
 
                 <Row md={4} className="g-4" style={{ margin: '5px' }}>
                     {loading ? (
