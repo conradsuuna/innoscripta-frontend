@@ -31,7 +31,6 @@ export const LoginModal = ({ show, handleClose }) => {
                 dispatch(loginSuccess());
                 handleClose();
             }).catch((error) => {
-                console.log(JSON.parse(error.request.response).message);
                 dispatch(loginFailure(JSON.parse(error.request.response).message));
             });
     };

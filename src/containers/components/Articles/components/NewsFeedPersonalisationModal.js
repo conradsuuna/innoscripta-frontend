@@ -11,9 +11,8 @@ import {
     updateUserPreferencesSuccess
 } from '../../../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { apiCaller, authApiCaller } from '../../../../utils/apiCaller';
+import { apiCaller } from '../../../../utils/apiCaller';
 import { MultiSelect } from "react-multi-select-component";
-
 
 export const NewsFeedPersonalisationModal = ({ show, handleClose }) => {
     const dispatch = useDispatch();
@@ -37,7 +36,9 @@ export const NewsFeedPersonalisationModal = ({ show, handleClose }) => {
         }
 
         dispatch(updateUserPreferences(body));
-        authApiCaller.post(endpoint, body)
+        // add auth to apiCaller
+        apiCaller.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+        apiCaller.post(endpoint, body)
             .then(() => {
                 dispatch(updateUserPreferencesSuccess(body));
                 handleClose();

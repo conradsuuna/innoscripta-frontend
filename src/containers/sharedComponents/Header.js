@@ -19,7 +19,6 @@ const Header = () => {
   const handleLoginShow = () => setShowLogin(!showLogin);
 
   const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
 
   const onLogout = () => {
     localStorage.removeItem("user");
